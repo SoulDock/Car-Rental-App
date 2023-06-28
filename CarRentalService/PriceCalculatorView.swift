@@ -2,19 +2,24 @@ import SwiftUI
 struct PriceCalculatorView: View {
     
     private let price: Int = 50
+    
+    let car: Car
+    
     @State var numberOfDays: Int = 1
     @State var selectedDate: Date = Date()
-    @State var userPhone: String
+    @State var userPhone: String =  ""
     @State var userEmail: String = ""
     @State var userAddress: String = ""
     @State var userFullName: String = ""
     @State var userDateOfBirth: Date = Date()
     
+    @State var dayTimeDelivery: Bool = true
+    @State var nightTimeDelivery: Bool = false
     
     @Environment(\.presentationMode) var presentationMode
     
     var totalCost: Int {
-        return price * numberOfDays
+        return car.price * numberOfDays
     }
     
     var payNowAmount: Int {
@@ -24,6 +29,10 @@ struct PriceCalculatorView: View {
     var body: some View {
             ScrollView {
                 HStack {
+                    Text("Бронирование авто")
+                        .font(.title2)
+                        .fontWeight(.bold)
+                    Spacer()
                     Button {
                         presentationMode.wrappedValue.dismiss()
                     } label: {
@@ -33,29 +42,14 @@ struct PriceCalculatorView: View {
                             .fontWeight(.bold)
                             .foregroundColor(Color("MoneyColor"))
                     }
-                    Spacer()
-                    
                 }
                 .padding(.bottom, 10)
                 .padding(.top, 20)
                 
                 VStack(alignment: .leading) {
-                    
-                    HStack(alignment: .center) {
-                        Spacer()
-                        Text("Бронирование авто")
-                            .font(.title2)
-                            .fontWeight(.bold)
-                            .padding(.bottom, 5)
-                        Spacer()
-                    }
-                    
-                    VStack(alignment: .leading) {
-                        Text("CIVIC")
+                    HStack{
+                        Text("\(car.name)")
                             .font(.system(.largeTitle, design: .default, weight: .regular))
-                        Text("honda")
-                            .font(.system(.title2, design: .default, weight: .regular))
-                            .foregroundColor(Color.gray)
                     }.frame(maxWidth: .infinity,alignment: .leading)
                     
                     VStack{
@@ -71,7 +65,7 @@ struct PriceCalculatorView: View {
                             .font(.title3)
                             .fontDesign(.monospaced)
                             .padding()
-                        Text("\(price)$")
+                        Text("\(car.price)$")
                             .font(.title2)
                             .foregroundColor(Color("MoneyColor"))
                             .fontDesign(.monospaced)
@@ -84,19 +78,32 @@ struct PriceCalculatorView: View {
                         .padding(.horizontal,15)
                         .padding(.bottom, 20)
                     
+
+                    
                     // MARK: CHECKBOXES
                     VStack(alignment: .leading){
                         Text("Время доставки")
                             .font(.headline)
                             .fontDesign(.monospaced)
-                        Text("- Доставка утром (9:00-11:00)")
-                            .padding(.vertical, 5)
-                            .padding(.leading, 20)
-                        Text("- Доставка вечером (20:00-22:00)")
-                            .padding(.leading, 20)
+                        Toggle(isOn: $dayTimeDelivery) {
+                            Text("Доставка утром (9:00-11:00)")
+                                .padding(.vertical, 5)
+                                .padding(.leading, 20)
+                        }.toggleStyle(SwitchToggleStyle(tint: Color("MoneyColor")))
+                        Toggle(isOn: $nightTimeDelivery) {
+                            Text("Доставка вечером (20:00-22:00)")
+                                .padding(.vertical, 5)
+                                .padding(.leading, 20)
+                        }.toggleStyle(SwitchToggleStyle(tint: Color("MoneyColor")))
+                    }
+                    .onChange(of: dayTimeDelivery) { newValue in
+                        nightTimeDelivery = !newValue
+                            }
+                    .onChange(of: nightTimeDelivery) { newValue in
+                                dayTimeDelivery = !newValue
                     }
                     .padding(.horizontal,15)
-                    .padding(.bottom, 20)
+                    .padding(.bottom, 0)
                     
                     Stepper(value: $numberOfDays, in: 0...Int.max, label: {
                         Text("Количество суток: \(numberOfDays)")
@@ -121,8 +128,8 @@ struct PriceCalculatorView: View {
                                 .background{
                                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                                         .stroke(Color("DataInputColor"), lineWidth: 1.5)
-                                        
-                            }
+                                    
+                                }
                         }
                         .padding(.horizontal, 15)
                         .padding(.bottom, 20)
@@ -132,6 +139,7 @@ struct PriceCalculatorView: View {
                                 .font(.headline)
                                 .fontDesign(.monospaced)
                             TextField("Электронная почта", text: $userEmail){}
+                                .textInputAutocapitalization(.never)
                                 .padding(.horizontal,20)
                                 .frame(height: 50)
                                 .font(.system(.title3, design: .monospaced, weight: .regular))
@@ -161,6 +169,7 @@ struct PriceCalculatorView: View {
                         .padding(.horizontal, 15)
                         .padding(.bottom, 20)
                         
+                        
                         VStack(alignment: .leading){
                             Text("Имя Фамилия на латинице")
                                 .font(.headline)
@@ -173,7 +182,7 @@ struct PriceCalculatorView: View {
                                     RoundedRectangle(cornerRadius: 15, style: .continuous)
                                         .stroke(Color("DataInputColor"), lineWidth: 1.5)
                                         
-                            }
+                                }
                         }
                         .padding(.horizontal, 15)
                         .padding(.bottom, 20)
@@ -184,33 +193,13 @@ struct PriceCalculatorView: View {
                             .padding(.horizontal,15)
                             .padding(.bottom, 20)
                         
-                    }
+                        }
                     
                     // MARK: PRICE DISPLAY SECTION
                     Group {
                         VStack(alignment: .center) {
-                            HStack{
-                                Text("Общая стоимость:")
-                                    .font(.title3)
-                                    .fontDesign(.monospaced)
-                                Text("\(totalCost)$")
-                                    .font(.title2)
-                                    .foregroundColor(Color("MoneyColor"))
-                                    .fontDesign(.monospaced)
-                            }
-                            .frame(maxWidth: 300)
-                            .padding(.bottom, 10)
-                            
-                            HStack{
-                                Text("К оплате сейчас:")
-                                    .font(.title3)
-                                    .fontDesign(.monospaced)
-                                    
-                                Text("\(payNowAmount)$")
-                                    .font(.title2)
-                                    .foregroundColor(Color("MoneyColor"))
-                                    .fontDesign(.monospaced)
-                            }.frame(maxWidth: 300)
+                            PriceDisplay(name: "Общая стоимость:", value: "\(totalCost)")
+                            PriceDisplay(name: "К оплате сейчас:", value: "\(car.profit)")
                         }.padding(.horizontal, 30)
                     }
                     
@@ -234,9 +223,29 @@ struct PriceCalculatorView: View {
    }
 
 
+
+
+struct PriceDisplay: View {
+    let name: String
+    let value: String
+    var body: some View{
+        HStack{
+            Text("\(name)")
+                .font(.title3)
+                .fontDesign(.monospaced)
+                
+            Text("\(value)$")
+                .font(.title2)
+                .foregroundColor(Color("MoneyColor"))
+                .fontDesign(.monospaced)
+        }.frame(maxWidth: 300)
+    }
+}
+
+
 struct PriceCalculatorView_Previews: PreviewProvider {
     static var previews: some View {
-        PriceCalculatorView(userPhone: "+")
+        PriceCalculatorView(car: .init(id: 0, name: "CarName", price: 0, profit: 0), userPhone: "+", dayTimeDelivery: true, nightTimeDelivery: false)
     }
 }
 

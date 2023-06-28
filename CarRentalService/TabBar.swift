@@ -10,11 +10,10 @@ struct TabBar: View {
         UITabBar.appearance().isHidden = true
     }
     
-    
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection: $selectedTab){
-                CarsListView()
+                CarsView()
                     .tag("Авто")
                 OrdersView()
                     .tag("Заказы")

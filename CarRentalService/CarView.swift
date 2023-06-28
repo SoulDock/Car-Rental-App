@@ -3,6 +3,9 @@ import SwiftUI
 
 struct CarView: View {
     @State var showCalculator: Bool = false
+    
+    let car: Car
+    
     let columns: [GridItem] = [
         GridItem(.flexible(), spacing: 0, alignment: nil),
         GridItem(.flexible(), spacing: 0, alignment: nil),
@@ -10,12 +13,9 @@ struct CarView: View {
     var body: some View {
         ScrollView {
             VStack {
-                VStack(alignment: .leading) {
-                    Text("CIVIC")
+                HStack() {
+                    Text("\(car.name)")
                         .font(.system(.largeTitle, design: .default, weight: .regular))
-                    Text("honda")
-                        .font(.system(.title2, design: .default, weight: .regular))
-                        .foregroundColor(Color.gray)
                 }.frame(maxWidth: .infinity,alignment: .leading)
                 VStack{
                     Image("CarImage")
@@ -26,79 +26,19 @@ struct CarView: View {
                 }
                 
                 
-                //SPECIFICATIONS
+                // MARK: SPECIFICATIONS
+                
                     LazyVGrid(columns: columns) {
-                        VStack(alignment: .leading){
-                            Image(systemName: "speedometer")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.gray)
-                            Text("Лимит:")
-                                .foregroundColor(Color.gray)
-                            Text("250 км")
-                                .font(.system(.title3, design: .monospaced, weight: .regular))
-                        }
-                        .padding(.leading, 15)
-                        .frame(width: 170, height: 100,alignment: .leading)
-                        .background{
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .stroke(Color("TabBG"), lineWidth: 3)
-                        }
-                        
-                        VStack(alignment: .leading){
-                            Image(systemName: "fuelpump.fill")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.gray)
-                            Text("Топливо:")
-                                .foregroundColor(Color.gray)
-                            Text("дизель")
-                                .font(.system(.title3, design: .monospaced, weight: .regular))
-                        }
-                        .padding(.leading, 15)
-                        .frame(width: 170, height: 100,alignment: .leading)
-                        .background{
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .stroke(Color("TabBG"), lineWidth: 3)
-                        }
-                        
-                        VStack(alignment: .leading){
-                            Image(systemName: "gearshape.fill")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.gray)
-                            Text("Трансмиссия:")
-                                .foregroundColor(Color.gray)
-                            Text("ручная")
-                                .font(.system(.title3, design: .monospaced, weight: .regular))
-                        }
-                        .padding(.leading, 15)
-                        .frame(width: 170, height: 100,alignment: .leading)
-                        .background{
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .stroke(Color("TabBG"), lineWidth: 3)
-                        }
-                        
-                        VStack(alignment: .leading){
-                            Image(systemName: "calendar")
-                                .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(.gray)
-                            Text("год выпуска:")
-                                .foregroundColor(.gray)
-                            Text("2013")
-                                .font(.system(.title3, design: .monospaced, weight: .regular))
-                        }
-                        .padding(.leading, 15)
-                        .frame(width: 170, height: 100,alignment: .leading)
-                        .background{
-                            RoundedRectangle(cornerRadius: 20, style: .continuous)
-                                .stroke(Color("TabBG"), lineWidth: 3)
-                        }
-                        
+                        SpecificationItem(name: "Лимит", value: "250 км", imageName: "speedometer")
+                        SpecificationItem(name: "Топливо", value: "Дизель", imageName: "fuelpump.fill")
+                        SpecificationItem(name: "Трансмиссия", value: "ручная", imageName: "gearshape.fill")
+                        SpecificationItem(name: "год выпуска", value: "2017", imageName: "calendar")
                     }
                 .frame(maxWidth: 360)
                 .padding(.top, 10)
+                
+                
+                // MARK: OTHER SPECIFICATIONS
                 
                 HStack {
                     Text("Доп Опции")
@@ -107,49 +47,16 @@ struct CarView: View {
                 .padding(.top, 20)
                 .frame(maxWidth: .infinity,alignment: .leading)
                 
-                //Доп опции
                 HStack{
-                    VStack(alignment: .leading){
-                        Image(systemName: "list.clipboard.fill")
-                            .resizable()
-                            .frame(width: 25, height: 30)
-                            .foregroundColor(.gray)
-                        Text("КАСКО:")
-                            .foregroundColor(.gray)
-                        Text("БЕСПЛАТНО")
-                            .font(.system(.title3, design: .monospaced, weight: .regular))
-                            .foregroundColor(Color("MoneyColor"))
-                    }
-                    .padding(.leading, 15)
-                    .frame(width: 170, height: 100,alignment: .leading)
-                    .background{
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .stroke(Color("TabBG"), lineWidth: 3)
-                    }
-                    VStack(alignment: .leading){
-                        Image(systemName: "calendar")
-                            .resizable()
-                            .frame(width: 30, height: 30)
-                            .foregroundColor(.gray)
-                        Text("Доставка:")
-                            .foregroundColor(.gray)
-                        Text("БЕСПЛАТНО")
-                            .foregroundColor(Color("MoneyColor"))
-                            .font(.system(.title3, design: .monospaced, weight: .regular))
-                    }
-                    .padding(.leading, 15)
-                    .frame(width: 170, height: 100,alignment: .leading)
-                    .background{
-                        RoundedRectangle(cornerRadius: 20, style: .continuous)
-                            .stroke(Color("TabBG"), lineWidth: 3)
-                    }
+                    SpecificationItem(name: "КАСКО", value: "БЕСПЛАТНО", imageName: "list.clipboard.fill")
+                    SpecificationItem(name: "Доставка", value: "БЕСПЛАТНО", imageName: "calendar")
                 }
                 
                 HStack{
                     Text("Стоимость суток:")
                         .font(.title3)
                         .fontDesign(.monospaced)
-                    Text("50$")
+                    Text("\(car.price)$")
                         .font(.title2)
                         .foregroundColor(Color("MoneyColor"))
                         .fontDesign(.monospaced)
@@ -171,7 +78,7 @@ struct CarView: View {
                 //MARK: SHOW CALCULATOR
                 
                 .sheet(isPresented: $showCalculator, content:  {
-                    PriceCalculatorView(userPhone: "")
+                    PriceCalculatorView(car: .init(id: car.id, name: car.name, price: car.price, profit: car.profit), userPhone: "")
                     
                 }).cornerRadius(20)
                     
@@ -183,15 +90,21 @@ struct CarView: View {
 }
 
 struct SpecificationItem: View {
-    @State var imageName: String
+    
+    let name: String
+    let value: String
+    let imageName: String
+    
     var body: some View {
         VStack(alignment: .leading){
-            Image(imageName)
+            Image(systemName: "\(imageName)")
                 .resizable()
                 .frame(width: 30, height: 30)
                 .foregroundColor(.gray)
-            Text("title")
-            Text("320 hp")
+            Text("\(name):")
+                .foregroundColor(Color.gray)
+            Text("\(value)")
+                .font(.system(.title3, design: .monospaced, weight: .regular))
         }
         .padding(.leading, 15)
         .frame(width: 170, height: 100,alignment: .leading)
@@ -204,7 +117,8 @@ struct SpecificationItem: View {
 
 struct CarView_Previews: PreviewProvider {
     static var previews: some View {
-        CarView()
+        CarView(car: .init(id: 0, name: "CarName", price: 0, profit: 0))
     }
 }
 
+  

@@ -4,7 +4,7 @@ import SwiftUI
 struct OrdersView: View {
     var body: some View {
         ScrollView {
-            ForEach(0..<10) { order in
+            ForEach(0..<5) { order in
                     //Text("\(order)")
                 VStack{
                     HStack{
@@ -36,6 +36,7 @@ struct OrdersView: View {
                 .frame(maxWidth: .infinity)
                 .background(Color("TabBG"))
                 .cornerRadius(20)
+                .padding(.vertical, 5)
             }
         }
         .padding(.horizontal, 20)

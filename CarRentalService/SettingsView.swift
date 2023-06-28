@@ -4,6 +4,13 @@ struct SettingsView: View {
     @State var phoneNumber: String = "+"
     @State var email: String = ""
     @State var address: String = ""
+    
+    let formatter: NumberFormatter = {
+           let formatter = NumberFormatter()
+           formatter.numberStyle = .decimal
+           return formatter
+       }()
+    
     var body: some View {
         VStack {
             Text("НАСТРОЙКИ")
@@ -27,7 +34,7 @@ struct SettingsView: View {
                             RoundedRectangle(cornerRadius: 15, style: .continuous)
                                 .stroke(Color.black, lineWidth: 1.5)
                                 
-                    }
+                        }
                 }
                 
                 VStack(alignment: .leading){
@@ -39,13 +46,12 @@ struct SettingsView: View {
                         .padding(.horizontal,20)
                         .frame(height: 45)
                         .font(.system(.title3, design: .monospaced, weight: .regular))
-                        .keyboardType(.numberPad)
                         .tracking(2)
                         .background{
                             RoundedRectangle(cornerRadius: 15, style: .continuous)
                                 .stroke(Color.black, lineWidth: 1.5)
                                 
-                    }
+                        }
                 }
                 
                 VStack(alignment: .leading){
@@ -57,13 +63,12 @@ struct SettingsView: View {
                         .padding(.horizontal,20)
                         .frame(height: 45)
                         .font(.system(.title3, design: .monospaced, weight: .regular))
-                        .keyboardType(.numberPad)
                         .tracking(2)
                         .background{
                             RoundedRectangle(cornerRadius: 15, style: .continuous)
                                 .stroke(Color.black, lineWidth: 1.5)
                                 
-                    }
+                        }
                 }
                 Spacer()
                 
@@ -83,8 +88,6 @@ struct SettingsView: View {
                 .padding(.top, 50)
                 .padding(.bottom, 100)
             }
-            
-           
         }.padding(.horizontal, 30)
     }
 }

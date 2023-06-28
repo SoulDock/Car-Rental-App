@@ -10,24 +10,20 @@ import SwiftUI
 struct VpnView: View {
     var body: some View {
         ZStack{
-            Color("vpnBgColor")
-                .edgesIgnoringSafeArea(.all)
-            
             VStack{
                 Image("server2")
                     .resizable()
                     .scaledToFit()
-                    .frame(height: 300)
+                    .frame(height: 250)
                 
                 VStack(spacing: 20) {
                     Image(systemName: "exclamationmark.triangle")
                         .resizable()
                         .scaledToFit()
                         .frame(width: 50, height: 50)
-                        .foregroundColor(Color.yellow)
+                        .foregroundColor(Color.black)
                     
                     Text("VPN БУДЕТ ДОСТУПЕН В БЛИЖАЙШЕЕ ВРЕМЯ!")
-                        .foregroundColor(Color.yellow)
                         .font(.system(.title3, design: .monospaced, weight: .bold))
                         .multilineTextAlignment(.center)
                 }

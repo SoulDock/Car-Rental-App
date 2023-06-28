@@ -1,33 +1,25 @@
 import SwiftUI
 
-//CONSTRUCTION COMMENTS:::::
-
-
-
-
-struct CarsListView: View {
+struct CarsView: View {
     @StateObject private var vm = CarViewModel()
     
-    @State var searchText: String = ""
-    
     var body: some View {
-        NavigationView{
-            ZStack{
-                ScrollView {
-                    
-                        ForEach(0..<6){index in
+        ScrollView {
+                VStack {
+                    ForEach(vm.cars, id: \.id){car in
+                        VStack{
                             VStack{
-                                
                                 Image("CarImage")
                                     .resizable()
                                     .scaledToFill()
                                     .frame(height: 200)
                                     .overlay(alignment: .bottom) {
                                         HStack(){
-                                            Text("HONDA CIVIC")
+                                            Text("\(car.name)")
                                                 .font(.system(.title3, design: .default, weight: .regular))
+                                                .textCase(.uppercase)
                                             Spacer()
-                                            Text("50$")
+                                            Text("\(car.price)$")
                                                 .font(.system(.title3, design: .monospaced, weight: .bold))
                                                 .foregroundColor(Color("MoneyColor"))
                                         }
@@ -88,7 +80,7 @@ struct CarsListView: View {
                                     .frame(width: 250)
                                     
                                     NavigationLink {
-                                        CarView(car: .init(id: 0, name: "CarName", price: 0, profit: 0))
+                                        CarView(car: car)
                                     } label: {
                                         Text("ПОДРОБНЕЕ")
                                             .font(.system(size: 18, weight: .bold, design: .default))
@@ -104,30 +96,23 @@ struct CarsListView: View {
                                 .frame(maxWidth: .infinity)
                                 .background(Color("TabBG"))
                             }
+                            .navigationBarTitle("назад")
                             .frame(maxWidth: .infinity)
                             .listRowSeparator(.hidden)
                             .background(Color("TabBG"))
                             .cornerRadius(10)
                         }
+                    }
                 }
-            }
-            .onAppear(perform: vm.getCars)
-            .searchable(text: $searchText)
-            .shadow(color: .gray, radius: 6)
-            .padding(.horizontal,20)
-            .navigationBarTitle("Все авто")
-            .navigationBarTitleDisplayMode(.inline)
         }
-        .navigationBarTitle("назад")
-        .accentColor(Color.black)
-        .padding(.bottom,75)
-        .ignoresSafeArea(.keyboard, edges: .bottom)
-       
+        .onAppear(perform: vm.getCars)
+        .padding(.horizontal,20)
+        .padding(.bottom, 80)
     }
 }
 
-struct CarsListView_Previews: PreviewProvider {
+struct CarsView_Previews: PreviewProvider {
     static var previews: some View {
-        CarsListView()
+        CarsView()
     }
 }

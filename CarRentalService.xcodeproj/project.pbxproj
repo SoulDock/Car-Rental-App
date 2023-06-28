@@ -14,11 +14,14 @@
 		DA2DA3062A2E582300CF2485 /* VerificationCountDownTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2DA3052A2E582300CF2485 /* VerificationCountDownTimerView.swift */; };
 		DA2DA3082A2E7E1400CF2485 /* VpnView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA2DA3072A2E7E1400CF2485 /* VpnView.swift */; };
 		DA5FC9C62A25E63F00ADAD94 /* PriceCalculatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA5FC9C52A25E63F00ADAD94 /* PriceCalculatorView.swift */; };
+		DA7C07AC2A36FF0F009A4FCB /* CarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7C07AB2A36FF0F009A4FCB /* CarModel.swift */; };
+		DA7C07AE2A36FF83009A4FCB /* GetAllCarsAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA7C07AD2A36FF83009A4FCB /* GetAllCarsAPIController.swift */; };
 		DA80D4102A015D6200260E00 /* CarRentalServiceApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80D40F2A015D6200260E00 /* CarRentalServiceApp.swift */; };
 		DA80D4122A015D6200260E00 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80D4112A015D6200260E00 /* ContentView.swift */; };
 		DA80D4142A015D6400260E00 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80D4132A015D6400260E00 /* Assets.xcassets */; };
 		DA80D4172A015D6400260E00 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DA80D4162A015D6400260E00 /* Preview Assets.xcassets */; };
 		DA80D41E2A015DA500260E00 /* PhoneNumberLoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DA80D41D2A015DA500260E00 /* PhoneNumberLoginView.swift */; };
+		DAA717022A4C3AAE00ED03CD /* CarsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAA717012A4C3AAE00ED03CD /* CarsView.swift */; };
 		DAFE91142A01814400CFBA44 /* OTPVerificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE91132A01814400CFBA44 /* OTPVerificationView.swift */; };
 		DAFE91162A018B9D00CFBA44 /* CarsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE91152A018B9D00CFBA44 /* CarsListView.swift */; };
 		DAFE91182A01972B00CFBA44 /* GetOPTCodeAPIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAFE91172A01972B00CFBA44 /* GetOPTCodeAPIController.swift */; };
@@ -32,12 +35,15 @@
 		DA2DA3052A2E582300CF2485 /* VerificationCountDownTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationCountDownTimerView.swift; sourceTree = "<group>"; };
 		DA2DA3072A2E7E1400CF2485 /* VpnView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VpnView.swift; sourceTree = "<group>"; };
 		DA5FC9C52A25E63F00ADAD94 /* PriceCalculatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PriceCalculatorView.swift; sourceTree = "<group>"; };
+		DA7C07AB2A36FF0F009A4FCB /* CarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarModel.swift; sourceTree = "<group>"; };
+		DA7C07AD2A36FF83009A4FCB /* GetAllCarsAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetAllCarsAPIController.swift; sourceTree = "<group>"; };
 		DA80D40C2A015D6200260E00 /* CarRentalService.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarRentalService.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DA80D40F2A015D6200260E00 /* CarRentalServiceApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRentalServiceApp.swift; sourceTree = "<group>"; };
 		DA80D4112A015D6200260E00 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		DA80D4132A015D6400260E00 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DA80D4162A015D6400260E00 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		DA80D41D2A015DA500260E00 /* PhoneNumberLoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberLoginView.swift; sourceTree = "<group>"; };
+		DAA717012A4C3AAE00ED03CD /* CarsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsView.swift; sourceTree = "<group>"; };
 		DAFE91132A01814400CFBA44 /* OTPVerificationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPVerificationView.swift; sourceTree = "<group>"; };
 		DAFE91152A018B9D00CFBA44 /* CarsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarsListView.swift; sourceTree = "<group>"; };
 		DAFE91172A01972B00CFBA44 /* GetOPTCodeAPIController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetOPTCodeAPIController.swift; sourceTree = "<group>"; };
@@ -88,6 +94,9 @@
 				DA80D4152A015D6400260E00 /* Preview Content */,
 				DA2DA3052A2E582300CF2485 /* VerificationCountDownTimerView.swift */,
 				DA2DA3072A2E7E1400CF2485 /* VpnView.swift */,
+				DA7C07AB2A36FF0F009A4FCB /* CarModel.swift */,
+				DA7C07AD2A36FF83009A4FCB /* GetAllCarsAPIController.swift */,
+				DAA717012A4C3AAE00ED03CD /* CarsView.swift */,
 			);
 			path = CarRentalService;
 			sourceTree = "<group>";
@@ -175,11 +184,14 @@
 				DAFE91182A01972B00CFBA44 /* GetOPTCodeAPIController.swift in Sources */,
 				DAFE91142A01814400CFBA44 /* OTPVerificationView.swift in Sources */,
 				DA202EA22A126FF700B342B7 /* CarView.swift in Sources */,
+				DA7C07AE2A36FF83009A4FCB /* GetAllCarsAPIController.swift in Sources */,
 				DA80D4122A015D6200260E00 /* ContentView.swift in Sources */,
+				DA7C07AC2A36FF0F009A4FCB /* CarModel.swift in Sources */,
 				DA80D4102A015D6200260E00 /* CarRentalServiceApp.swift in Sources */,
 				DAFE91162A018B9D00CFBA44 /* CarsListView.swift in Sources */,
 				DA80D41E2A015DA500260E00 /* PhoneNumberLoginView.swift in Sources */,
 				DA202E9C2A124C7A00B342B7 /* TabBar.swift in Sources */,
+				DAA717022A4C3AAE00ED03CD /* CarsView.swift in Sources */,
 				DA202E9E2A125A6F00B342B7 /* OrdersView.swift in Sources */,
 				DA2624682A150FEC00A7CA32 /* SettingsView.swift in Sources */,
 				DA2DA3062A2E582300CF2485 /* VerificationCountDownTimerView.swift in Sources */,
